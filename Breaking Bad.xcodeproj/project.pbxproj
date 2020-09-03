@@ -168,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				CAC5005F24FFDACD0040E376 /* Character.swift */,
-				CA92DCD4250131D0004746C3 /* String.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				CAC500722500DDB90040E376 /* Color.swift */,
+				CA92DCD4250131D0004746C3 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
