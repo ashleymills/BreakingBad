@@ -10,8 +10,7 @@ import Combine
 
 struct HomeScreen: View {
 
-    @StateObject var viewModel: CharacterListViewModel
-    @State var showingCharacter: CharacterViewModel?
+    @StateObject private var viewModel: CharacterListViewModel
 
     private let columns = Array(repeatElement(GridItem(.flexible(minimum: 0, maximum: .greatestFiniteMagnitude)), count: 2))
 
@@ -24,18 +23,23 @@ struct HomeScreen: View {
             if viewModel.characters.isEmpty {
                 LoadingView()
             } else {
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        ForEach(viewModel.characters) { character in
-                            Button(action: { showingCharacter = character }) {
-                                CharacterView(character: character)
-                                    .onAppear {
-                                        viewModel.loadImage(for: character)
-                                    }
+                VStack {
+                    searchField()
+                    seasonSelector()
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 10) {
+                            ForEach(viewModel.filteredCharacters) { character in
+                                Button(action: { viewModel.showingCharacter = character }) {
+                                    CharacterView(character: character)
+                                        .onAppear {
+                                            viewModel.loadImage(for: character)
+                                        }
+                                }
                             }
                         }
+                        .animation(.default)
+                        .padding(10)
                     }
-                    .padding(10)
                 }
             }
         }
@@ -45,7 +49,7 @@ struct HomeScreen: View {
         .alert(item: $viewModel.error) { error in
             Alert(title: Text("Error loading characters"), message: Text(error.localizedDescription), primaryButton: .default(Text("Retry"), action: viewModel.fetch), secondaryButton: .cancel(Text("OK")))
         }
-        .sheet(item: $showingCharacter) { character in
+        .sheet(item: $viewModel.showingCharacter) { character in
             NavigationView {
                 CharacterScreen(character: character)
             }
@@ -62,8 +66,38 @@ struct HomeScreen: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    func searchField() -> some View {
+        HStack {
+            TextField("Search for a name", text: $viewModel.filter)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Button("Cancel") {
+                viewModel.filter = ""
+                endEditing()
+            }
+            .disabled(viewModel.filter.isEmpty)
+            .accentColor(.bbHighlight)
+        }
+        .padding()
+    }
+
+    func seasonSelector() -> some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text("Seasons:")
+                .font(.headline)
+                .foregroundColor(.bbHighlight)
+            ForEach(viewModel.seasons, id: \.self) { season  in
+                SeaasonToggle(season: season, isOn: $viewModel[season])
+            }
+        }
+        .padding(.horizontal)
+    }
+
     func loadCharacters() {
         viewModel.fetch()
+    }
+
+    func endEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

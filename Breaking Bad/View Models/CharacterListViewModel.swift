@@ -18,6 +18,21 @@ class CharacterListViewModel: ObservableObject {
 
     @Published var characters: [CharacterViewModel] = []
     @Published var error: Networking.Error?
+    @Published var filter: String = ""
+    @Published var selectedSeasons: [Int: Bool] = [:]
+    @Published var showingCharacter: CharacterViewModel?
+
+    var filteredCharacters: [CharacterViewModel] {
+
+        let seasons = Array(selectedSeasons.filter(\.value).keys)
+        let charactersBySeason = characters.filter { $0.appearedInSeasons(seasons) }
+
+        guard !filter.isEmpty else { return charactersBySeason }
+
+        return charactersBySeason.filter { character in
+            return character.nameContains(filter)
+        }
+    }
 
     init(session: APISession = URLSession.shared) {
         self.session = session
@@ -35,6 +50,19 @@ class CharacterListViewModel: ObservableObject {
             characters.firstIndex(of: character).map { characters[$0].image = image }
         }
     }
+
+    subscript(_ season: Int) -> Bool {
+        get {
+            selectedSeasons[season, default: false]
+        }
+        set {
+            selectedSeasons[season] = newValue
+        }
+    }
+
+    var seasons: [Int] {
+        Array(selectedSeasons.keys).sorted()
+    }
 }
 
 private extension CharacterListViewModel {
@@ -43,6 +71,11 @@ private extension CharacterListViewModel {
         switch result {
         case let .success(characters):
             self.characters = characters.map { CharacterViewModel($0) }
+
+            if let maxSeason = characters.flatMap(\.appearance).max() {
+                selectedSeasons = (1...maxSeason).reduce(into: [:]) { $0[$1] = true }
+            }
+
         case let .failure(error):
             self.error = error
         }

@@ -15,6 +15,8 @@
 		CA92DCCE2501140E004746C3 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92DCCD2501140E004746C3 /* Endpoint.swift */; };
 		CA92DCD025011B9F004746C3 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92DCCF25011B9F004746C3 /* NetworkingTests.swift */; };
 		CA92DCD225011F3B004746C3 /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92DCD125011F3B004746C3 /* APISession.swift */; };
+		CA92DCD5250131D0004746C3 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92DCD4250131D0004746C3 /* String.swift */; };
+		CA92DCD725013DF9004746C3 /* SeaasonToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92DCD625013DF9004746C3 /* SeaasonToggle.swift */; };
 		CAC5004F24FFD9AC0040E376 /* Breaking_BadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC5004E24FFD9AC0040E376 /* Breaking_BadApp.swift */; };
 		CAC5005124FFD9AC0040E376 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC5005024FFD9AC0040E376 /* HomeScreen.swift */; };
 		CAC5005324FFD9AF0040E376 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC5005224FFD9AF0040E376 /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		CA92DCCD2501140E004746C3 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		CA92DCCF25011B9F004746C3 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		CA92DCD125011F3B004746C3 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
+		CA92DCD4250131D0004746C3 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CA92DCD625013DF9004746C3 /* SeaasonToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaasonToggle.swift; sourceTree = "<group>"; };
 		CAC5004B24FFD9AC0040E376 /* Breaking Bad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breaking Bad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC5004E24FFD9AC0040E376 /* Breaking_BadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breaking_BadApp.swift; sourceTree = "<group>"; };
 		CAC5005024FFD9AC0040E376 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				CAC5005024FFD9AC0040E376 /* HomeScreen.swift */,
 				CAC5006524FFF9EA0040E376 /* CharacterScreen.swift */,
 				CAC5005D24FFDA720040E376 /* CharacterView.swift */,
+				CA92DCD625013DF9004746C3 /* SeaasonToggle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				CAC5005F24FFDACD0040E376 /* Character.swift */,
+				CA92DCD4250131D0004746C3 /* String.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 				CA92DCCE2501140E004746C3 /* Endpoint.swift in Sources */,
 				CAC5005124FFD9AC0040E376 /* HomeScreen.swift in Sources */,
 				CAC5004F24FFD9AC0040E376 /* Breaking_BadApp.swift in Sources */,
+				CA92DCD725013DF9004746C3 /* SeaasonToggle.swift in Sources */,
 				CA92DCC5250100B0004746C3 /* CharacterData.swift in Sources */,
 				CAC5005E24FFDA720040E376 /* CharacterView.swift in Sources */,
 				CA92DCD225011F3B004746C3 /* APISession.swift in Sources */,
@@ -309,6 +316,7 @@
 				CAC5006024FFDACD0040E376 /* Character.swift in Sources */,
 				CAC5006424FFEC430040E376 /* CharacterViewModel.swift in Sources */,
 				CAC500682500243F0040E376 /* ImageLoader.swift in Sources */,
+				CA92DCD5250131D0004746C3 /* String.swift in Sources */,
 				CAC5006224FFEBF90040E376 /* CharacterListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

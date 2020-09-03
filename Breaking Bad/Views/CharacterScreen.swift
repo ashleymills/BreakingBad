@@ -36,6 +36,7 @@ struct CharacterScreen: View {
                         details(title: "Occupation", value: character.occupation)
                         details(title: "Status", value: character.status)
                         details(title: "Nickname", value: character.nickname)
+                        details(title: "Seasons", value: character.seasons)
                     }
                     .padding(.horizontal, 10)
                     Spacer(minLength: 0)
