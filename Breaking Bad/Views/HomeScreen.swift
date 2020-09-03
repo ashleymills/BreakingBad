@@ -29,7 +29,7 @@ struct HomeScreen: View {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 10) {
                             ForEach(viewModel.filteredCharacters) { character in
-                                Button(action: { viewModel.showingCharacter = character }) {
+                                Button(action: { showCharacter(character) }) {
                                     CharacterView(character: character)
                                         .onAppear {
                                             viewModel.loadImage(for: character)
@@ -90,6 +90,11 @@ struct HomeScreen: View {
             }
         }
         .padding(.horizontal)
+    }
+
+    func showCharacter(_ character: CharacterViewModel) {
+        endEditing()
+        viewModel.showingCharacter = character
     }
 
     func loadCharacters() {

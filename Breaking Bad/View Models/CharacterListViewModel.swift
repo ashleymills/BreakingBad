@@ -25,7 +25,7 @@ class CharacterListViewModel: ObservableObject {
     var filteredCharacters: [CharacterViewModel] {
 
         let seasons = Array(selectedSeasons.filter(\.value).keys)
-        let charactersBySeason = characters.filter { $0.appearedInSeasons(seasons) }
+        let charactersBySeason = characters.filter { $0.didAppearInSeasons(seasons) }
 
         guard !filter.isEmpty else { return charactersBySeason }
 

@@ -21,5 +21,11 @@ class CharacterViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.status, "Presumed dead")
         XCTAssertEqual(viewModel.nickname, "Heisenberg")
         XCTAssertEqual(viewModel.image, ImageLoader.Image.loading)
+        XCTAssertEqual(viewModel.seasons, "1, 2, 3, 4, 5")
+        XCTAssertTrue(viewModel.nameContains("alt"))
+        XCTAssertFalse(viewModel.nameContains("xyz"))
+        XCTAssertTrue(viewModel.didAppearInSeasons([1, 3]))
+        XCTAssertTrue(viewModel.didAppearInSeasons([5, 6]))
+        XCTAssertFalse(viewModel.didAppearInSeasons([6]))
     }
 }

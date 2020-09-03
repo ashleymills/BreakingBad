@@ -49,7 +49,7 @@ class CharacterViewModel: ObservableObject {
         nameForSearching.contains(text.forSearching)
     }
 
-    func appearedInSeasons(_ seasons: [Int]) -> Bool {
+    func didAppearInSeasons(_ seasons: [Int]) -> Bool {
         for season in seasons {
             if character.appearance.contains(season) {
                 return true
